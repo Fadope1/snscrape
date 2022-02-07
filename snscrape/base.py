@@ -173,6 +173,7 @@ class Scraper:
 				logger.debug(f'... with data: {data!r}')
 			try:
 				r = self._session.send(req, allow_redirects = allowRedirects, timeout = timeout, proxies = proxies)
+				self._session.close()
 			except requests.exceptions.RequestException as exc:
 				if attempt < self._retries:
 					retrying = ', retrying'
